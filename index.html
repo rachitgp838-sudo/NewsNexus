@@ -1,1 +1,842 @@
-demo
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NewsNexus | Latest News & Top Stories</title>
+  <meta name="description" content="NewsNexus brings you the latest news, breaking updates, business, technology, sports and stories that matter.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #071a2a;
+      --blue: #087bff;
+      --light-blue: #eaf3ff;
+      --lime: #c6f36b;
+      --white: #ffffff;
+      --paper: #f5f7fa;
+      --muted: #63717b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", Arial, sans-serif;
+      background: var(--paper);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .topbar {
+      padding: 8px 5%;
+      background: var(--lime);
+      color: var(--navy);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* HEADER */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 18px 7%;
+      background: var(--white);
+      border-bottom: 1px solid #e8edf2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px 3px 10px 3px;
+      background: linear-gradient(135deg, #087bff, #071a2a);
+      color: white;
+      font-size: 29px;
+      font-weight: 900;
+    }
+
+    .logo span:last-child {
+      color: var(--blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 12px;
+      font-weight: 700;
+      color: #52616a;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .header-btn {
+      background: var(--navy);
+      color: white;
+      padding: 12px 17px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      min-height: 510px;
+      display: flex;
+      align-items: center;
+      padding: 70px 9%;
+      color: white;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(3,17,29,.96), rgba(3,17,29,.65)),
+        url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Oswald", sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+
+    h1 span {
+      color: var(--lime);
+    }
+
+    .hero p.description {
+      max-width: 490px;
+      color: #d0dbe3;
+      font-size: 14px;
+      margin: 22px 0 28px;
+      line-height: 1.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      background: var(--lime);
+      color: var(--navy);
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 13px 20px;
+      margin-left: 10px;
+      border: 1px solid #ffffff70;
+      border-radius: 3px;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* NEWS TICKER */
+
+    .ticker {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      padding: 17px;
+      background: var(--navy);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .ticker span {
+      color: var(--lime);
+    }
+
+    /* COMMON SECTION */
+
+    .section {
+      padding: 75px 8%;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 1.2;
+    }
+
+    h2 span {
+      color: var(--blue);
+    }
+
+    .view-all {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    /* NEWS CARDS */
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      background: white;
+      border: 1px solid #e7ebef;
+      border-radius: 5px;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px #071a2a12;
+    }
+
+    .news-image {
+      height: 205px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .news-image img {
+      height: 100%;
+      transition: transform .4s;
+    }
+
+    .news-card:hover .news-image img {
+      transform: scale(1.05);
+    }
+
+    .category {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 6px 10px;
+      background: var(--lime);
+      color: var(--navy);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .news-content {
+      padding: 22px;
+    }
+
+    .meta {
+      margin-bottom: 10px;
+      color: #7c8992;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .news-content h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .news-content p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .read-more {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* TOPIC SECTION */
+
+    .topics {
+      background: var(--navy);
+      color: white;
+    }
+
+    .topics h2 {
+      color: white;
+    }
+
+    .topics-description {
+      max-width: 550px;
+      margin: 15px 0 30px;
+      color: #bdcbd4;
+      font-size: 13px;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .topic-card {
+      min-height: 140px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #102b40;
+      border: 1px solid #294052;
+      border-radius: 4px;
+      transition: background .2s;
+    }
+
+    .topic-card:hover {
+      background: #16456a;
+    }
+
+    .topic-icon {
+      font-size: 28px;
+    }
+
+    .topic-card h3 {
+      font-size: 20px;
+    }
+
+    .topic-card p {
+      color: #bdcbd4;
+      font-size: 10px;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 55px 8%;
+      background: var(--light-blue);
+    }
+
+    .newsletter p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .newsletter .btn {
+      background: var(--blue);
+      color: white;
+      white-space: nowrap;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px 8% 20px;
+      background: #04111e;
+      color: white;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #263846;
+    }
+
+    footer .logo {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: #c0cbd2;
+      font-size: 11px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 20px;
+      color: #9cabb6;
+      font-size: 10px;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media (max-width: 900px) {
+      header {
+        padding: 17px 5%;
+        flex-wrap: wrap;
+      }
+
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .header-btn {
+        display: none;
+      }
+
+      .section {
+        padding: 60px 5%;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .topic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        gap: 16px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      nav {
+        width: 100%;
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 480px;
+        padding: 60px 6%;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .hero p.description {
+        font-size: 12px;
+      }
+
+      .btn, .btn-outline {
+        padding: 12px 14px;
+        font-size: 10px;
+      }
+
+      .ticker {
+        gap: 12px;
+        font-size: 9px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-image {
+        height: 220px;
+      }
+
+      .topic-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .topic-card {
+        min-height: 125px;
+        padding: 15px;
+      }
+
+      .topic-card h3 {
+        font-size: 17px;
+      }
+
+      .newsletter {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 45px 6%;
+      }
+
+      .footer-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    YOUR DAILY DESTINATION FOR NEWS, IDEAS & IMPORTANT STORIES
+  </div>
+
+  <header>
+    <a href="#home" class="logo">
+      <div class="logo-icon">N</div>
+      <div>News<span>Nexus</span></div>
+    </a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#latest">Latest News</a>
+      <a href="#topics">Categories</a>
+      <a href="#about">About Us</a>
+    </nav>
+
+    <a href="#latest" class="header-btn">Explore News ↗</a>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">THE NEWS. THE PEOPLE. THE STORIES.</div>
+
+        <h1>STAY INFORMED.<br>STAY <span>AHEAD.</span></h1>
+
+        <p class="description">
+          Welcome to NewsNexus, your destination for the latest news,
+          breaking updates, technology, business, sports and the stories
+          shaping our world.
+        </p>
+
+        <a href="#latest" class="btn">Explore Top Stories →</a>
+        <a href="#topics" class="btn-outline">Browse Categories</a>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div><span>●</span> BREAKING NEWS</div>
+      <div><span>●</span> TOP STORIES</div>
+      <div><span>●</span> TECHNOLOGY</div>
+      <div><span>●</span> BUSINESS</div>
+      <div><span>●</span> SPORTS</div>
+    </div>
+
+    <section class="section" id="latest">
+      <div class="section-heading">
+        <div>
+          <div class="section-label">WHAT'S HAPPENING</div>
+          <h2>THE LATEST <span>STORIES</span></h2>
+        </div>
+
+        <a href="#topics" class="view-all">Explore Categories →</a>
+      </div>
+
+      <div class="news-grid">
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80"
+              alt="Newspapers representing current news"
+            >
+            <span class="category">TOP STORIES</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">NEWS & CURRENT AFFAIRS</div>
+            <h3>Latest News and Important Headlines</h3>
+            <p>
+              Stay updated with major developments, current affairs,
+              and important events from around the world.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+              alt="Technology circuit board"
+            >
+            <span class="category">TECHNOLOGY</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">TECH & INNOVATION</div>
+            <h3>Technology That Is Changing Our World</h3>
+            <p>
+              Discover new gadgets, artificial intelligence,
+              digital trends, and the future of technology.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+              alt="Business analytics dashboard"
+            >
+            <span class="category">BUSINESS</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">BUSINESS & ECONOMY</div>
+            <h3>Business Trends and Market Insights</h3>
+            <p>
+              Explore business developments, startup stories,
+              economic trends, and financial headlines.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
+              alt="Athletes competing in a sports event"
+            >
+            <span class="category">SPORTS</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">SPORTS UPDATES</div>
+            <h3>Sports News, Matches and Big Moments</h3>
+            <p>
+              Follow cricket, football, major tournaments,
+              player stories, and memorable sporting moments.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80"
+              alt="Government building representing public affairs"
+            >
+            <span class="category">WORLD</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">WORLD & PUBLIC AFFAIRS</div>
+            <h3>Understanding Events Around the Globe</h3>
+            <p>
+              Read explainers and discover context behind
+              important international developments.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-image">
+            <img
+              src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=900&q=80"
+              alt="Sunrise over a landscape"
+            >
+            <span class="category">LIFESTYLE</span>
+          </div>
+
+          <div class="news-content">
+            <div class="meta">LIFESTYLE & CULTURE</div>
+            <h3>Ideas, People and Stories That Inspire</h3>
+            <p>
+              Discover culture, everyday life, useful ideas,
+              and stories from people making a difference.
+            </p>
+            <a href="#topics" class="read-more">READ MORE →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section topics" id="topics">
+      <div class="section-label">EXPLORE NEWSNEXUS</div>
+      <h2>NEWS FOR EVERY <span>INTEREST</span></h2>
+
+      <p class="topics-description">
+        Explore the topics you care about and discover new perspectives
+        with NewsNexus.
+      </p>
+
+      <div class="topic-grid">
+
+        <a href="#latest" class="topic-card">
+          <div class="topic-icon">🌍</div>
+          <div>
+            <h3>World News</h3>
+            <p>Global events and updates ↗</p>
+          </div>
+        </a>
+
+        <a href="#latest" class="topic-card">
+          <div class="topic-icon">💻</div>
+          <div>
+            <h3>Technology</h3>
+            <p>Digital trends and innovation ↗</p>
+          </div>
+        </a>
+
+        <a href="#latest" class="topic-card">
+          <div class="topic-icon">📈</div>
+          <div>
+            <h3>Business</h3>
+            <p>Markets and economy ↗</p>
+          </div>
+        </a>
+
+        <a href="#latest" class="topic-card">
+          <div class="topic-icon">🏏</div>
+          <div>
+            <h3>Sports</h3>
+            <p>Matches and player stories ↗</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="newsletter" id="about">
+      <div>
+        <div class="section-label">WELCOME TO NEWSNEXUS</div>
+        <h2>REAL NEWS. <span>REAL IMPACT.</span></h2>
+        <p>
+          Explore important stories, useful information, and perspectives
+          that help you stay informed.
+        </p>
+      </div>
+
+      <a href="#latest" class="btn">Discover NewsNexus →</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-top">
+
+      <a href="#home" class="logo">
+        <div class="logo-icon">N</div>
+        <div>News<span>Nexus</span></div>
+      </a>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#latest">Latest News</a>
+        <a href="#topics">Categories</a>
+        <a href="#about">About Us</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 NewsNexus. All rights reserved.</p>
+      <p>Real News • Real People • Real Impact</p>
+    </div>
+  </footer>
+
+</body>
+</html>
